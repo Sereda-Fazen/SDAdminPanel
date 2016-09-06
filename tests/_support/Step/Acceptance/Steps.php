@@ -1,7 +1,6 @@
 <?php
 namespace Step\Acceptance;
 
-use Exception;
 
 class Steps extends \AcceptanceTester
 {
@@ -17,9 +16,6 @@ class Steps extends \AcceptanceTester
     public static $img = '//a[@href="/search"]/img';
 
 
-
-
-
     public function login($email,$pass)
     {
         $I = $this;
@@ -30,5 +26,25 @@ class Steps extends \AcceptanceTester
         $I->waitForElement(self::$success);
         $I->waitForElement(self::$img);
         $I->seeElement(self::$success);
+    }
+    public function checkMenu()
+    {
+        $I = $this;
+        $links = count($I->grabMultiple('//*[@class="pictogram-menu"]/div[2]/div'));
+        for ($l = 1; $l <= $links; $l++ ) {
+            $I->waitForElement('//*[@class="pictogram-menu"]/div[2]/div['.$l.']//img');
+            $I->click('//*[@class="pictogram-menu"]/div[2]/div['.$l.']//img');
+            switch ($l){
+                case 1:
+                    $I->seeInCurrentUrl('/user/index');
+                    break;
+                case 2:
+                    $I->seeInCurrentUrl('/manageContacts');
+                    break;
+                case 3;
+                    $I->seeInCurrentUrl('/');
+                    break;
+            }
+        }
     }
 }
