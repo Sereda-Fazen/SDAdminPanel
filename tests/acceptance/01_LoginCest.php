@@ -6,7 +6,6 @@ use \Step\Acceptance;
  */
 class LoginCest
 {
-
     function LoginEmpty( \Page\Login $login)
     {
         $login->loginWrong();
@@ -31,10 +30,5 @@ class LoginCest
     {
         $login->logoutSuccess();
     }
-    
-    
-
-    
-
 }
 

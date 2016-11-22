@@ -8,28 +8,29 @@ modules:
     config:
         WebDriver:
             url: 'https://sdadminpanel-staging001.elasticbeanstalk.com'
-            restart: false
+
             browser: chrome
             window_size: 1980x1780
-            clear_cookies: false
+            restart: true
 
 env:
-
-PhantomJs:
-   modules:
-    config:
-      enabled:
+  firefox:
+    modules:
+      config:
         WebDriver:
-          url: 'https://sdadminpanel-staging001.elasticbeanstalk.com'
-          browser: phantomjs
+          url: 'http://sdadminpanel-staging001.elasticbeanstalk.com/'
+          restart: false
+          browser: firefox
+          window_size: 1980x1780
 
-
-
-
-
-
-
-
+  phantom:
+    modules:
+        config:
+            WebDriver:
+                url: 'https://sdadminpanel-staging001.elasticbeanstalk.com/'
+                browser: phantomjs
+                capabilities:
+                    phantomjs.cli.args: ['--ignore-ssl-errors=true']
 
 
 

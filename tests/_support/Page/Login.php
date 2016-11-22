@@ -11,15 +11,11 @@ class Login
     public static $error = '.flash-error';
     public static $img = '//a[@href="/search"]/img';
     public static $success = '.pictogram-menu';
-
-
     public static $email = '#LoginForm_username';
     public static $pass = '#LoginForm_password';
     public static $submit = '[name="send"] > span > span';
-
     public static $logout ='#_admin_auth_logout';
     public static $loginForm = '#login-form';
-
     public static $msg = 'div.col-main > p';
 
     protected $tester;
@@ -34,10 +30,12 @@ class Login
         $I = $this->tester;
         $I->amOnPage(self::$URL);
         $I->click(self::$clickLogIn);
+        /*
         $I->waitForElement(self::$error);
         $I->see('Login Email cannot be blank.',self::$error);
         $I->see('Password cannot be blank.',self::$error);
-    }
+    */
+        }
 
     public function loginWrongEmail($email)
     {
@@ -81,7 +79,6 @@ class Login
     public function logoutSuccess()
     {
         $I = $this->tester;
-
         $I->waitForElement(self::$logout);
         $I->click(self::$logout);
         $I->seeInCurrentUrl(self::$URL);
